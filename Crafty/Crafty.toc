@@ -1,0 +1,32 @@
+## Interface: 70300
+## Title: Crafty
+## Version: 1.1.4
+## Notes: Crafting for profit, made easy!
+## Author: crunchy
+## SavedVariables: Crafty_Items, Crafty_Queue, Crafty_QueueIntermediates, Crafty_TradeSkills, Crafty_Characters
+#
+
+Templates.xml
+AHFrame.xml
+QueueFrame.xml
+ShopFrame.xml
+
+Localisation.lua
+ScanningTooltip.lua
+Data.lua
+Wait.lua
+Merchant.lua
+UI.lua
+TradeSkill.lua
+Bags.lua
+AH.lua
+Tooltip.lua
+AHFrame.lua
+QueueFrame.lua
+ShopFrame.lua
+Events.lua
+
+#
+# Big thanks to tester Tecosu. I can not thank you enough for all your testing 
+# and support!
+#

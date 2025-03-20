@@ -1,0 +1,257 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\..\FrameXML\UI.xsd">
+
+    <Script>
+	LoadAddOn("Blizzard_AuctionUI")
+    </Script>
+
+    <Frame name="Crafty_AHFrame" parent="AuctionFrame" enableMouse="true" 
+	hidden="true">
+	<Size>
+	    <AbsDimension x="824" y="432"/>
+	</Size>
+	<Anchors>
+	    <Anchor point="TOPLEFT"/>
+	</Anchors>
+
+	<Frames>
+	    <ScrollFrame name="$parentList"
+		inherits="HybridScrollFrameTemplate">
+		<Size x="782" y="333" />
+		<Anchors>
+		    <Anchor point="TOPLEFT" x="20" y="-75" />
+		</Anchors>
+
+		<Frames>
+		    <Slider inherits="HybridScrollBarTemplate">
+			<KeyValues>
+			    <KeyValue key="doNotHide" value="true"
+				type="boolean" />
+			</KeyValues>
+			<Anchors>
+			    <Anchor point="TOPLEFT" relativePoint="TOPRIGHT"
+				x="1" y="-14" />
+			    <Anchor point="BOTTOMLEFT"
+				relativePoint="BOTTOMRIGHT" x="1" y="14" />
+			</Anchors>
+		    </Slider>
+
+		    <Button name="$parentRaritySort" 
+			inherits="AuctionSortButtonTemplate" text="Rarity">
+			<Size>
+			    <AbsDimension x="158" y="19"/>
+			</Size>
+			<Anchors>
+			    <Anchor point="TOPLEFT">
+				<Offset>
+				    <AbsDimension x="45" y="23"/>
+				</Offset>
+			    </Anchor>
+			</Anchors>
+			<Scripts>
+			    <OnClick>
+				-- TODO
+			    </OnClick>
+			</Scripts>
+		    </Button>
+
+		    <Button name="$parentStackNumSort" 
+			inherits="AuctionSortButtonTemplate" text="Num">
+			<Size>
+			    <AbsDimension x="50" y="19"/>
+			</Size>
+			<Anchors>
+			    <Anchor point="LEFT" relativeTo="$parentRaritySort" 
+				relativePoint="RIGHT">
+				<Offset>
+				    <AbsDimension x="-2" y="0"/>
+				</Offset>
+			    </Anchor>
+			</Anchors>
+			<Scripts>
+			    <OnClick>
+				-- TODO
+			    </OnClick>
+			</Scripts>
+		    </Button>
+
+		    <Button name="$parentStackSizeSort" 
+			inherits="AuctionSortButtonTemplate" text="Size">
+			<Size>
+			    <AbsDimension x="50" y="19"/>
+			</Size>
+			<Anchors>
+			    <Anchor point="LEFT" 
+				relativeTo="$parentStackNumSort" 
+				relativePoint="RIGHT">
+				<Offset>
+				    <AbsDimension x="-2" y="0"/>
+				</Offset>
+			    </Anchor>
+			</Anchors>
+			<Scripts>
+			    <OnClick>
+				-- TODO
+			    </OnClick>
+			</Scripts>
+		    </Button>
+
+		    <Button name="$parentPriceSort" 
+			inherits="AuctionSortButtonTemplate" text="Price">
+			<Size>
+			    <AbsDimension x="150" y="19"/>
+			</Size>
+			<Anchors>
+			    <Anchor point="LEFT" 
+				relativeTo="$parentStackSizeSort" 
+				relativePoint="RIGHT">
+				<Offset>
+				    <AbsDimension x="-2" y="0"/>
+				</Offset>
+			    </Anchor>
+			</Anchors>
+			<Scripts>
+			    <OnClick>
+				-- TODO
+			    </OnClick>
+			</Scripts>
+		    </Button>
+
+		    <Button name="$parentSellerSort" 
+			inherits="AuctionSortButtonTemplate" text="Seller">
+			<Size>
+			    <AbsDimension x="130" y="19"/>
+			</Size>
+			<Anchors>
+			    <Anchor point="LEFT" 
+				relativeTo="$parentPriceSort" 
+				relativePoint="RIGHT">
+				<Offset>
+				    <AbsDimension x="-2" y="0"/>
+				</Offset>
+			    </Anchor>
+			</Anchors>
+			<Scripts>
+			    <OnClick>
+				-- TODO
+			    </OnClick>
+			</Scripts>
+		    </Button>
+
+		    <Button name="$parentActionSort" 
+			inherits="AuctionSortButtonTemplate" text="Action">
+			<Size>
+			    <AbsDimension x="208" y="19"/>
+			</Size>
+			<Anchors>
+			    <Anchor point="LEFT" 
+				relativeTo="$parentSellerSort" 
+				relativePoint="RIGHT">
+				<Offset>
+				    <AbsDimension x="-2" y="0"/>
+				</Offset>
+			    </Anchor>
+			</Anchors>
+			<Scripts>
+			    <OnClick>
+				-- TODO
+			    </OnClick>
+			</Scripts>
+		    </Button>
+
+		    <Button name="$parentCreate" 
+			inherits="UIPanelButtonTemplate" text="Create Auction">
+			<Size x="133" y="22"/>
+			<Anchors>
+			    <Anchor point="BOTTOMRIGHT" 
+				relativeTo="Crafty_AHFrame" />
+			</Anchors>
+			<Scripts>
+			    <OnClick>
+				self:GetParent():Create()
+			    </OnClick>
+			</Scripts>
+		    </Button>
+
+		    <Button name="$parentScan" inherits="UIPanelButtonTemplate"
+			text="Scan Stock">
+			<Size x="133" y="22"/>
+			<Anchors>
+			    <Anchor point="BOTTOMLEFT" x="180"
+				relativeTo="Crafty_AHFrame" />
+			</Anchors>
+			<Scripts>
+			    <OnClick>
+				self:GetParent():Scan()
+			    </OnClick>
+			</Scripts>
+		    </Button>
+
+		    <Button name="$parentStop" inherits="UIPanelButtonTemplate"
+			text="Stop">
+			<Size x="50" y="22"/>
+			<Anchors>
+			    <Anchor point="LEFT" x="0" relativeTo="$parentScan" 
+				relativePoint="RIGHT" />
+			</Anchors>
+			<Scripts>
+			    <OnClick>
+				self:GetParent():StopScan()
+			    </OnClick>
+			</Scripts>
+		    </Button>
+		</Frames>
+
+		<Scripts>
+		    <OnLoad>
+			self:RegisterEvent("PLAYER_ENTERING_WORLD")
+		    </OnLoad>
+		    <OnEvent>
+			self:OnEvent(event, ...)
+		    </OnEvent>
+		    <OnUpdate>
+			self:Refresh()
+		    </OnUpdate>
+		</Scripts>
+	    </ScrollFrame>
+	</Frames>
+
+	<Layers>
+	    <Layer level="BACKGROUND">
+		<FontString inherits="GameFontNormal" text="Crafty">
+		    <Anchors>
+			<Anchor point="TOP">
+			    <Offset>
+				<AbsDimension x="0" y="-18"/>
+			    </Offset>
+			</Anchor>
+		    </Anchors>
+		</FontString>
+
+		<FontString name="$parentProgressText" 
+		    inherits="GameFontNormalSmall">
+		    <Anchors>
+			<Anchor point="TOPLEFT" relativeTo="$parentListStop" 
+			    relativePoint="TOPRIGHT">
+			    <Offset>
+				<AbsDimension x="2" y="-6"/>
+			    </Offset>
+			</Anchor>
+		    </Anchors>
+		</FontString>
+
+		<FontString name="$parentCreateText" 
+		    inherits="GameFontNormalSmall" justifyH="RIGHT">
+		    <Anchors>
+			<Anchor point="TOPRIGHT" relativeTo="$parentListCreate"
+			    relativePoint="TOPLEFT">
+			    <Offset>
+				<AbsDimension x="-2" y="-6"/>
+			    </Offset>
+			</Anchor>
+		    </Anchors>
+		</FontString>
+	    </Layer>
+	</Layers>
+    </Frame>
+
+</Ui>

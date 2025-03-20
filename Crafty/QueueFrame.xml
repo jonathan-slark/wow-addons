@@ -1,0 +1,188 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\..\FrameXML\UI.xsd">
+
+    <Frame name="Crafty_QueueFrame" inherits="PortraitFrameTemplate" 
+	toplevel="true" parent="UIParent" enableMouse="true" hidden="true">
+	<Size x="280" y="496" />
+
+	<Frames>
+	    <Frame name="$parentInset" inherits="InsetFrameTemplate">
+		<Size x="269" y="410" />
+		<Anchors>
+		    <Anchor point="TOPLEFT" x="4" y="-60" />
+		</Anchors>
+	    </Frame>
+
+	    <ScrollFrame name="$parentList" 
+		inherits="HybridScrollFrameTemplate">
+		<Size x="244" y="403" />
+		<Anchors>
+		    <Anchor point="TOPLEFT" x="7" y="-63" />
+		</Anchors>
+
+		<Frames>
+		    <Slider inherits="HybridScrollBarTemplate">
+			<KeyValues>
+			    <KeyValue key="doNotHide" value="true" 
+				type="boolean" />
+		    </KeyValues>
+			<Anchors>
+			    <Anchor point="TOPLEFT" relativePoint="TOPRIGHT" 
+				x="1" y="-14" />
+			    <Anchor point="BOTTOMLEFT" 
+				relativePoint="BOTTOMRIGHT" x="1" y="14" />
+			</Anchors>
+		    </Slider>
+
+		    <Button name="$parentProfit" 
+			inherits="UIPanelButtonTemplate" text="Restock">
+			<Size x="66" y="22"/>
+			<Anchors>
+			    <Anchor point="TOPLEFT" 
+				relativePoint="BOTTOMLEFT" x="-3" y="-5" />
+			</Anchors>
+			<Scripts>
+			    <OnClick>
+				self:GetParent():QueueProfitable()
+			    </OnClick>
+			</Scripts>
+		    </Button>
+
+		    <Button name="$parentClear" inherits="UIPanelButtonTemplate"
+			text="Clear">
+			<Size x="66" y="22"/>
+			<Anchors>
+			    <Anchor point="TOPLEFT" relativePoint="TOPRIGHT" 
+				relativeTo="$parentProfit" x="1" />
+			</Anchors>
+			<Scripts>
+			    <OnClick>
+				self:GetParent():QueueClear()
+			    </OnClick>
+			</Scripts>
+		    </Button>
+
+		    <Button name="$parentCraft" inherits="UIPanelButtonTemplate"
+			text="Craft">
+			<Size x="66" y="22"/>
+			<Anchors>
+			    <Anchor point="TOPRIGHT" 
+				relativePoint="BOTTOMRIGHT" x="20" y="-5" />
+			</Anchors>
+			<Scripts>
+			    <OnClick>
+				self:GetParent():QueueCraft()
+			    </OnClick>
+			</Scripts>
+		    </Button>
+
+		    <Button name="$parentShop" inherits="UIPanelButtonTemplate"
+			text="Shop">
+			<Size x="66" y="22"/>
+			<Anchors>
+			    <Anchor point="TOPRIGHT" relativePoint="TOPLEFT" 
+				relativeTo="$parentCraft" x="-1" />
+			</Anchors>
+			<Scripts>
+			    <OnClick>
+				self:GetParent():OpenShop()
+			    </OnClick>
+			</Scripts>
+		    </Button>
+
+		</Frames>
+
+		<Scripts>
+		    <OnLoad>
+			self:RegisterEvent("PLAYER_ENTERING_WORLD")
+		    </OnLoad>
+		    <OnEvent>
+			self:OnEvent(event, ...)
+		    </OnEvent>
+		</Scripts>
+	    </ScrollFrame>
+	</Frames>
+
+	<!--
+	<Layers>
+	    <Layer level="BACKGROUND">
+		<FontString name="$parentNotice" inherits="GameFontNormalSmall" 
+		    justifyH="CENTER" wordwrap="true" text="Notice: you need to visit an Auctioneer and use the Scan button on the Browse Auctions tab. This is so Crafty has up to date price information." hidden="true">
+		    <Size x="260" />
+		    <Anchors>
+			<Anchor point="BOTTOMLEFT">
+			    <Offset>
+				<AbsDimension x="8" y="7"/>
+			    </Offset>
+			</Anchor>
+		    </Anchors>
+		</FontString>
+
+		<FontString name="$parentProfitTitle" inherits="GameFontNormal" 
+		    justifyH="LEFT" text="Total Profit">
+		    <Anchors>
+			<Anchor point="BOTTOMLEFT">
+			    <Offset>
+				<AbsDimension x="8" y="8"/>
+			    </Offset>
+			</Anchor>
+		    </Anchors>
+		    <Color r="1" g="1" b="1" a="1" />
+		</FontString>
+
+		<FontString name="$parentCostTitle" inherits="GameFontNormal" 
+		    justifyH="LEFT" text="Total Cost">
+		    <Anchors>
+			<Anchor point="BOTTOMLEFT" 
+			    relativeTo="$parentProfitTitle" 
+			    relativePoint="TOPLEFT">
+			    <Offset>
+				<AbsDimension x="0" y="4"/>
+			    </Offset>
+			</Anchor>
+		    </Anchors>
+		    <Color r="1" g="1" b="1" a="1" />
+		</FontString>
+
+		<FontString name="$parentProfitNum" inherits="GameFontNormal" 
+		    justifyH="RIGHT" text="0">
+		    <Anchors>
+			<Anchor point="BOTTOMRIGHT">
+			    <Offset>
+				<AbsDimension x="-8" y="8"/>
+			    </Offset>
+			</Anchor>
+		    </Anchors>
+		    <Color r="1" g="1" b="1" a="1" />
+		</FontString>
+
+		<FontString name="$parentCostNum" inherits="GameFontNormal" 
+		    justifyH="RIGHT" text="0">
+		    <Anchors>
+			<Anchor point="BOTTOMRIGHT" 
+			    relativeTo="$parentProfitNum"
+			    relativePoint="TOPRIGHT">
+			    <Offset>
+				<AbsDimension x="0" y="4"/>
+			    </Offset>
+			</Anchor>
+		    </Anchors>
+		    <Color r="1" g="1" b="1" a="1" />
+		</FontString>
+	    </Layer>
+	</Layers>
+	-->
+
+	<Scripts>
+	    <OnLoad>
+		UIPanelWindows["Crafty_QueueFrame"] = { 
+		    area = "left", 
+		    pushable = 4
+		}
+		Crafty_QueueFrameTitleText:SetText("Crafty: Queue")
+		SetPortraitToTexture(Crafty_QueueFramePortrait,
+		    "Interface\\ICONS\\70_professions_scroll_02");
+	    </OnLoad>	    
+	</Scripts>
+    </Frame>
+</Ui>

@@ -1,0 +1,45 @@
+Change Log
+==========
+
+1.1.4
+-----
+- Fixed sound issue caused by patch 7.3 change.
+- Added Primal Sargerite value, using the new 7.3.2 trader.
+
+1.1.3
+-----
+- Profession recipe scan code was breaking when a new rank was learned. Fixed.
+
+1.1.2
+-----
+- Updated interface version for patch 7.2.
+- Updated profession recipe scan code for patch 7.2 changes.
+- Added Draenor reagents bought from Garrison Resources vendor to the item 
+  database. AH prices will be added to the tooltips after the next AH scan.
+- Fixed tooltip error when there is no price data.
+
+1.1.1
+-----
+- Fixed bug where Undercut button could suggest too low a price for some 
+  enchants.
+- Fixed bug where Undercut and Scan Stock buttons could think there was no
+  competition for some enchants.
+
+1.1
+---
+- Added disenchant values for items from the current expansion.
+- Made default "Cancel Auction" button much quicker to use: removed the popup
+  confirmation and another auction is selected automatically.
+- Made default "Buyout" button much quicker to use: removed the popup 
+  confirmation for auctions under 10,000g and another auction is selected
+  automatically.
+
+1.0.1
+-----
+- Various optimisations. Including, but not limited to: reduced the delay
+  when opening a Profession window.
+- Various bug fixes.
+
+1.0
+---
+- Initial release.

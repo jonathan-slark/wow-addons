@@ -1,0 +1,97 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\..\FrameXML\UI.xsd">
+
+    <Frame name="Crafty_ShopFrame" inherits="PortraitFrameTemplate" 
+	toplevel="true" parent="UIParent" enableMouse="true" hidden="true">
+	<Size x="280" y="496" />
+
+	<Frames>
+	    <Frame name="$parentInset" inherits="InsetFrameTemplate">
+		<Size x="269" y="410" />
+		<Anchors>
+		    <Anchor point="TOPLEFT" x="4" y="-60" />
+		</Anchors>
+	    </Frame>
+
+	    <ScrollFrame name="$parentList" 
+		inherits="HybridScrollFrameTemplate">
+		<Size x="244" y="403" />
+		<Anchors>
+		    <Anchor point="TOPLEFT" x="7" y="-63" />
+		</Anchors>
+
+		<Frames>
+		    <Slider inherits="HybridScrollBarTemplate">
+			<KeyValues>
+			    <KeyValue key="doNotHide" value="true" 
+				type="boolean" />
+			</KeyValues>
+			<Anchors>
+			    <Anchor point="TOPLEFT" relativePoint="TOPRIGHT" 
+				x="1" y="-14" />
+			    <Anchor point="BOTTOMLEFT" 
+				relativePoint="BOTTOMRIGHT" x="1" y="14" />
+			</Anchors>
+		    </Slider>
+
+		    <Button name="$parentAH" 
+			inherits="UIPanelButtonTemplate" text="Search AH">
+			<Size x="133" y="22" />
+			<Anchors>
+			    <Anchor point="TOPLEFT" 
+				relativePoint="BOTTOMLEFT" x="-3" y="-5" />
+			</Anchors>
+			<Scripts>
+			    <OnClick>
+				self:GetParent():SearchAH()
+			    </OnClick>
+			</Scripts>
+		    </Button>
+
+		    <Button name="$parentVendor" 
+			inherits="UIPanelButtonTemplate" text="Buy from Vendor">
+			<Size x="133" y="22" />
+			<Anchors>
+			    <Anchor point="TOPRIGHT" 
+				relativePoint="BOTTOMRIGHT" x="20" y="-5" />
+			</Anchors>
+			<Scripts>
+			    <OnClick>
+				self:GetParent():BuyVendor()
+			    </OnClick>
+			</Scripts>
+		    </Button>
+		</Frames>
+
+		<Scripts>
+		    <OnLoad>
+			self:RegisterEvent("PLAYER_ENTERING_WORLD")
+		    </OnLoad>
+		    <OnEvent>
+			self:OnEvent(event, ...)
+		    </OnEvent>
+		    <OnUpdate>
+			self:Refresh()
+		    </OnUpdate>
+		</Scripts>
+	    </ScrollFrame>
+	</Frames>
+
+	<Scripts>
+	    <OnLoad>
+		UIPanelWindows["Crafty_ShopFrame"] = { 
+		    area = "left", 
+		    pushable = 5
+		}
+		Crafty_ShopFrameTitleText:SetText("Crafty: Shop")
+		SetPortraitToTexture(Crafty_ShopFramePortrait,
+		    "Interface\\Merchantframe\\UI-BuyBack-Icon");
+	    </OnLoad>	    
+	    <OnShow>
+		self:OnShow()
+	    </OnShow>
+	    <OnHide>
+		self:OnHide()
+	    </OnHide>
+	</Scripts>
+    </Frame>
+</Ui>
